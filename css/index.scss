@@ -1,0 +1,819 @@
+@charset "utf-8";
+
+$mainColor: #009223;
+$goldColor: #ffc300;
+
+* {
+  margin: 0;
+  padding: 0;
+  line-height: 120%;
+}
+
+body {
+  font-size: 16px;
+  color: #666;
+  font-family: "font_ns", sans-serif;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #666;
+}
+
+@mixin display($display, $flexWrap, $justify, $align) {
+  display: $display;
+  flex-wrap: $flexWrap;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+// header(헤더) 시작
+.header {
+  width: 100%;
+  border-top: 5px solid $mainColor;
+  height: 164px;
+  &::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background-color: #ddd;
+    z-index: 2;
+    top: 169px;
+  }
+  .header-wrap {
+    width: 1170px;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    .logo {
+      flex-basis: 100%;
+      text-align: center;
+      margin-top: 35px;
+    }
+    .member {
+      position: absolute;
+      right: 25px;
+      top: 40px;
+      ul {
+        display: flex;
+        align-items: center;
+        li {
+          position: relative;
+          &:nth-child(2) {
+            margin-left: 30px;
+            margin-right: 15px;
+          }
+          &:nth-child(2)::after {
+            content: "";
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background-color: #ddd;
+            left: -16px;
+            top: 50%;
+            margin-top: -2px;
+          }
+          &:nth-child(3) {
+            a {
+              font-size: 0;
+              width: 30px;
+              height: 30px;
+              background-image: url("../images/icon_utill_global.png");
+            }
+          }
+          a {
+            font-size: 13px;
+            display: block;
+          }
+        }
+      }
+    }
+    .nav {
+      flex-basis: 100%;
+      display: flex;
+      height: 59px;
+      padding-top: 16px;
+      padding-bottom: 10px;
+      position: relative;
+      z-index: 9;
+      ul {
+        display: flex;
+        width: 990px;
+        margin: 0 auto;
+        height: 69px;
+        justify-content: space-between;
+        align-items: center;
+        li {
+          flex-basis: 165px;
+          text-align: center;
+          font-weight: bold;
+          font-size: 18px;
+          letter-spacing: -0.04em;
+          height: 69px;
+          line-height: 67px;
+          cursor: pointer;
+          a {
+            display: inline-block;
+            width: 100%;
+            color: #292929;
+          }
+        }
+        li.on {
+          a {
+            color: $mainColor;
+          }
+        }
+      }
+    }
+  }
+  .submenu {
+    width: 100%;
+    background-color: #fff;
+    transition: 0.2s;
+    padding-top: 40px;
+    margin-top: -41px;
+    height: 0;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    .submenu-wrap {
+      width: 990px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      ul {
+        flex-basis: 165px;
+        text-align: center;
+        padding-top: 20px;
+        li {
+          height: 35px;
+          transition: 0.2s;
+          opacity: 0;
+          a {
+            display: inline-block;
+            width: 100%;
+            font-size: 15px;
+            line-height: -0.05em;
+            padding: 8px 0 9px;
+          }
+        }
+        li.on {
+          opacity: 1;
+        }
+      }
+    }
+  }
+  .submenu.on {
+    height: 260px;
+  }
+}
+// header(헤더) 끝
+
+// slide(슬라이드) 시작
+.slide {
+  width: 100%;
+  height: 440px;
+  position: relative;
+  overflow: hidden;
+  top: 1px;
+  & > ul {
+    width: 400%;
+    li {
+      img {
+        width: 100%;
+        height: 440px;
+      }
+    }
+  }
+  ul {
+    display: flex;
+    & > li {
+      position: relative;
+    }
+  }
+  .indicator {
+    position: absolute;
+    right: 365px;
+    bottom: 50px;
+    ul {
+      li {
+        margin: 0 5px;
+        a {
+          font-size: 0;
+          display: block;
+          width: 10px;
+          height: 10px;
+          background-color: #fff;
+          border-radius: 30px;
+          transition: 0.3s;
+        }
+        a.on {
+          width: 30px;
+          background-color: $goldColor;
+        }
+      }
+    }
+  }
+}
+// slide(슬라이드) 끝
+
+// quick-menu(퀵메뉴) 시작
+.quick-menu {
+  width: 1170px;
+  margin: -29px auto 0;
+  position: relative;
+  z-index: 9;
+  display: flex;
+  justify-content: flex-end;
+  ul {
+    display: flex;
+    flex-basis: 600px;
+    li {
+      flex-basis: 50%;
+      height: 80px;
+      text-align: center;
+      &:nth-child(1) {
+        background-color: #ffce32;
+        border-top-left-radius: 30px;
+        letter-spacing: -0.02em;
+        a {
+          color: #292929;
+          &::before {
+            content: "";
+            display: inline-block;
+            position: relative;
+            width: 24px;
+            height: 30px;
+            background-image: url(../images/icon_map.png);
+            margin-right: 13px;
+            vertical-align: middle;
+            top: -2px;
+          }
+        }
+      }
+      &:nth-child(2) {
+        background-color: $mainColor;
+        border-bottom-right-radius: 30px;
+        letter-spacing: -0.06em;
+        a {
+          color: #fff;
+          &::before {
+            content: "";
+            display: inline-block;
+            position: relative;
+            width: 34px;
+            height: 30px;
+            background-image: url(../images/icon_franchise.png);
+            vertical-align: middle;
+            margin-right: 13px;
+          }
+        }
+      }
+      a {
+        font-size: 22px;
+        padding-top: 26px;
+        display: inline-block;
+        width: 100%;
+        font-weight: bold;
+      }
+    }
+  }
+}
+// quick-menu(퀵메뉴) 끝
+
+// subway-menu(서브웨이메뉴) 시작
+.subway-menu {
+  border-color: #fff;
+  width: 100%;
+  padding-bottom: 60px;
+  height: 560px;
+  .menu-list {
+    width: 1170px;
+    margin: 0 auto;
+    padding-top: 60px;
+    padding-bottom: 33px;
+    display: flex;
+    justify-content: space-between;
+    h3 {
+      color: #292929;
+      font-size: 40px;
+      font-family: "font_sw", sans-serif;
+      padding-top: 17px;
+      padding-left: 25px;
+      margin-bottom: 1px;
+      height: 60px;
+      background: url(../images/bul_tit.png) 0 12px no-repeat;
+    }
+    ul {
+      display: flex;
+      margin-top: 44px;
+      li {
+        padding-left: 25px;
+        margin-left: 23px;
+        font-weight: 300;
+        position: relative;
+        &.on {
+          color: $mainColor;
+          font-weight: bold;
+        }
+        &:not(:last-child)::after {
+          content: "";
+          position: absolute;
+          content: "";
+          position: absolute;
+          width: 1px;
+          height: 15px;
+          background-color: #ddd;
+          right: -24px;
+          top: 3px;
+        }
+        a {
+          display: inline-block;
+          width: 100%;
+          letter-spacing: -0.03em;
+        }
+      }
+    }
+  }
+  .menu-content {
+    width: 100%;
+    height: 320px;
+    position: relative;
+    overflow: hidden;
+    // overflow: hidden;
+    .menu-content-wrap {
+      width: 1200px;
+      height: 100%;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      display: none;
+      &:nth-child(1) {
+        display: block;
+      }
+    }
+    .menu-wrap {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    .menu-area {
+      width: 200%;
+      display: flex;
+      position: relative;
+    }
+    .menu-box {
+      flex-basis: 260px;
+      height: 320px;
+      margin-left: 30px;
+      padding: 0 5px;
+      cursor: pointer;
+      text-align: center;
+      position: relative;
+      img {
+        width: 100%;
+        height: 182px;
+      }
+      h3 {
+        color: #292929;
+        font-size: 18px;
+        margin-top: -1px;
+        margin-bottom: 8px;
+      }
+      p {
+        color: #999;
+        font-size: 13px;
+        line-height: 21px;
+        letter-spacing: -0.04em;
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        width: 98px;
+        height: 98px;
+        background-image: url("../images/btn_more.png");
+        left: 50%;
+        top: 50%;
+        margin: -22px 0 0 -42px;
+        opacity: 0;
+      }
+      &:hover::after {
+        opacity: 1;
+      }
+      &:hover img {
+        width: 340px;
+        height: 238px;
+      }
+      &:hover p {
+        display: none;
+      }
+      &:hover h3 {
+        margin-top: 10px;
+      }
+    }
+    .arrow {
+      a {
+        font-size: 0;
+        position: absolute;
+        top: 128px;
+        width: 50px;
+        height: 50px;
+        overflow: hidden;
+        background-image: url("../images/icon_event_slider_arr.png");
+        &:nth-child(1) {
+          left: -150px;
+        }
+        &:nth-child(2) {
+          right: -150px;
+          background-position-x: 100%;
+        }
+        &:nth-child(1):hover {
+          background-position-y: 100%;
+        }
+        &:nth-child(2):hover {
+          background-position-y: 100%;
+        }
+      }
+    }
+  }
+}
+// subway-menu(서브웨이메뉴) 끝
+
+// content (컨텐트) 시작
+.content-menu {
+  width: 100%;
+  background: url("../images/bg_content.gif") 0 -30px;
+  .content-wrap {
+    width: 1280px;
+    margin: 0 auto;
+    padding: 80px 0;
+    .content-top {
+      display: flex;
+      height: 300px;
+      .content-amused {
+        flex-basis: 400px;
+        margin-left: 55px;
+        height: 100%;
+        background-image: url("../images/bg_utilization.png");
+        p {
+          margin-left: 39px;
+          font-size: 28px;
+          font-weight: bold;
+          color: #fff;
+          line-height: 40px;
+          letter-spacing: 0.02em;
+          &:nth-child(1) {
+            margin: 39px 0 0 39px;
+            letter-spacing: -0.03em;
+          }
+        }
+        a {
+          display: inline-block;
+          margin: 100px 0 0 41px;
+          width: 92px;
+          height: 36px;
+          line-height: 36px;
+          color: #fff;
+          border: 2px solid #fff;
+          text-align: center;
+          border-radius: 20px;
+          font-weight: 300;
+        }
+      }
+      .content-history {
+        flex-basis: 825px;
+        height: 100%;
+        background-image: url("../images/img_subway_history.png");
+        p {
+          color: #fff;
+          margin-left: 410px;
+          font-size: 28px;
+          font-weight: bold;
+          line-height: 40px;
+          letter-spacing: -0.02em;
+          &:nth-child(1) {
+            margin-top: 38px;
+          }
+        }
+        a {
+          display: inline-block;
+          margin: 100px 0 0 410px;
+          width: 128px;
+          height: 36px;
+          line-height: 36px;
+          color: #fff;
+          border: 2px solid #fff;
+          text-align: center;
+          border-radius: 20px;
+          font-weight: 300;
+        }
+      }
+    }
+    .content-bottom {
+      width: 100%;
+      height: 100%;
+      margin: 30px 0 0 55px;
+      display: flex;
+      .content-notice {
+        display: flex;
+        flex-basis: 870px;
+        background-color: #fff;
+        height: 300px;
+        margin-right: 30px;
+        border-radius: 30px 0 30px 0;
+        overflow: hidden;
+        .title {
+          margin: 75px 0 0 60px;
+          h3 {
+            color: #292929;
+            font-size: 30px;
+            font-family: "font_sw", sans-serif;
+            height: 60px;
+            padding-top: 17px;
+            padding-left: 25px;
+            margin-bottom: 1px;
+            background-image: url("../images/bul_tit.png");
+            background-repeat: no-repeat;
+          }
+          p {
+            text-align: center;
+            line-height: 26px;
+            letter-spacing: -0.03em;
+          }
+        }
+        .text {
+          flex-basis: 50%;
+          margin: 70px 0 0 133.5px;
+          ul {
+            li {
+              position: relative;
+              cursor: pointer;
+              &:not(:nth-child(1)) {
+                margin-top: 21px;
+              }
+              a {
+                color: #292929;
+                font-size: 16px;
+                position: relative;
+                letter-spacing: -0.03em;
+                &::after {
+                  content: "";
+                  position: absolute;
+                  bottom: 0;
+                  left: 0;
+                  width: 0%;
+                  border-bottom: 1px solid $mainColor;
+                  transition: 0.3s;
+                }
+                &:hover {
+                  color: $mainColor;
+                }
+                &:hover::after {
+                  color: $mainColor;
+                  width: 100%;
+                }
+              }
+            }
+          }
+          & > a {
+            display: inline-block;
+            font-size: 14px;
+            margin: 33px 0 7px;
+            color: #aaa;
+          }
+        }
+      }
+    }
+    .content-slide {
+      flex-basis: 270px;
+      background-color: #fff;
+      height: 300px;
+      border-radius: 0 30px 0 30px;
+      position: relative;
+      overflow: hidden;
+      & > ul {
+        display: flex;
+        width: 300%;
+      }
+      .indicator {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        ul {
+          li {
+            display: inline-block;
+            font-size: 0;
+            width: 10px;
+            height: 10px;
+            background-color: #fff;
+            border-radius: 30px;
+            margin: 0 5px;
+            transition: 0.3s;
+            cursor: pointer;
+            &.on {
+              width: 30px;
+              background-color: $goldColor;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+// content (컨텐트) 끝
+
+// footer-menu (푸터메뉴) 시작
+.footer-menu {
+  text-align: center;
+  padding: 40px 0 37px;
+  ul {
+    height: 70px;
+    overflow: hidden;
+    display: inline-block;
+    li {
+      float: left;
+      margin-left: 80px;
+      height: 100%;
+      position: relative;
+      a {
+        display: block;
+        height: 70px;
+        padding-left: 90px;
+        font-size: 0;
+        p {
+          font-size: 18px;
+          color: #292929;
+          text-align: left;
+          font-weight: bold;
+          margin-top: 11px;
+          letter-spacing: -0.04em;
+        }
+        span {
+          font-size: 13px;
+          color: #999;
+          text-align: left;
+          margin-top: 6px;
+          display: block;
+          font-weight: normal;
+          letter-spacing: -0.02em;
+        }
+        .icon {
+          background: url("../images/icon_quickmenu.png") no-repeat;
+          width: 70px;
+          height: 70px;
+          position: absolute;
+          left: 0;
+          top: 0;
+        }
+      }
+      &:nth-child(1) {
+        left: -1px;
+        margin-left: 0;
+      }
+      &:nth-child(2) .icon {
+        background-position-x: -70px;
+      }
+      &:nth-child(3) .icon {
+        background-position-x: -140px;
+      }
+      &:nth-child(4) .icon {
+        background-position-x: -210px;
+      }
+    }
+  }
+}
+//  footer-menu (푸터메뉴) 끝
+
+// footer (푸터) 시작
+.footer {
+  background-color: #292929;
+  padding: 24px 0 18.81px;
+  color: #666;
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background-color: #3b3b3b;
+    top: 59px;
+  }
+  .footer-wrap {
+    width: 1170px;
+    margin: 0 auto;
+    position: relative;
+    .footer-top {
+      margin-bottom: 25px;
+      ul {
+        display: flex;
+        li {
+          margin-right: 29px;
+          height: 18px;
+          position: relative;
+          top: -2px;
+          a {
+            display: block;
+            font-size: 14px;
+            letter-spacing: -0.05em;
+          }
+          &:nth-child(2) {
+            a {
+              font-weight: bold;
+              color: #bbb;
+            }
+          }
+          &:nth-child(5) {
+            a {
+              letter-spacing: 0.05em;
+            }
+          }
+        }
+      }
+    }
+    .footer-bottom {
+      span {
+        font-size: 13px;
+        display: inline-block;
+        margin-top: 18px;
+        margin-left: 3px;
+        padding-left: 9px;
+        letter-spacing: 0;
+        position: relative;
+        &:not(:nth-child(1))::after {
+          content: "";
+          position: absolute;
+          width: 2px;
+          height: 10px;
+          background-color: #666;
+          left: 0;
+          top: 3px;
+        }
+        &:nth-child(1) {
+          margin-left: 0;
+          padding-left: 0;
+        }
+      }
+      p {
+        font-size: 13px;
+        line-height: 31px;
+        letter-spacing: 0.005em;
+        font-family: "font_sw", sans-serif;
+      }
+    }
+    .sns-link {
+      position: absolute;
+      right: -10px;
+      top: 52px;
+      width: 165px;
+      height: 50px;
+      ul {
+        li {
+          position: absolute;
+          width: 50px;
+          height: 50px;
+          overflow: hidden;
+          font-size: 0;
+          bottom: 0;
+          cursor: pointer;
+          &::after {
+            content: "";
+            transition: 0.3s;
+            width: 50px;
+            height: 50px;
+            display: block;
+            opacity: 0;
+          }
+          &:nth-child(1) {
+            background-image: url("../images/icon_sns_instar.png");
+          }
+          &:nth-child(1)::after {
+            background-image: url("../images/icon_sns_instar.png");
+            background-position-x: 100%;
+          }
+          &:nth-child(1):hover::after {
+            opacity: 1;
+          }
+          &:nth-child(2) {
+            left: 65px;
+            background-image: url("../images/icon_sns_facebook.png");
+          }
+          &:nth-child(2)::after {
+            background-image: url("../images/icon_sns_facebook.png");
+            background-position-x: 100%;
+          }
+          &:nth-child(2):hover::after {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}
+// footer (푸터) 끝
